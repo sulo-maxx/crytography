@@ -1,0 +1,50 @@
+### a) **How the app design ensures confidentiality, integrity, and availability (CIA)**
+
+The **CIA Triad**—confidentiality, integrity, and availability—is essential in ensuring a secure and reliable mobile banking app. Here's how the design can uphold each principle:
+
+1. **Confidentiality**:
+   - **Data Encryption**: All sensitive data such as login credentials, account details, and transaction history is encrypted both during transmission (using protocols like TLS/SSL) and when stored in the database (using encryption techniques like AES).
+   - **Access Control**: The app ensures that only authorized users can access their data. Role-based access controls (RBAC) or fine-grained permissions prevent unauthorized personnel from accessing sensitive user information.
+   - **Session Management**: Secure session handling mechanisms ensure that user sessions are timed out after periods of inactivity or after successful logout to prevent unauthorized access if the device is left unattended.
+
+2. **Integrity**:
+   - **Data Integrity Checks**: The app uses mechanisms like checksums or hashes to validate that data has not been altered during transmission or while stored. For example, each transaction might include a digital signature or hash to verify its authenticity.
+   - **Transaction Logs**: Every transaction is logged in a tamper-evident manner to ensure that any modification or unauthorized attempt to alter data is traceable.
+   - **Secure APIs**: Communication between the app and the server uses APIs with secure data validation and input sanitization to ensure that only valid and authentic transactions are processed.
+
+3. **Availability**:
+   - **Redundancy and Failover Systems**: The app ensures availability by utilizing multiple data centers or cloud services with redundancy features. If one server goes down, another one can handle the requests, ensuring no downtime for users.
+   - **Load Balancing**: Load balancers help distribute incoming traffic across multiple servers, ensuring that no single server is overwhelmed, thus preventing service disruptions.
+   - **Monitoring and Alerts**: Continuous monitoring of servers and networks helps identify potential disruptions before they impact users. Automated alerts can trigger backup systems to kick in as necessary.
+
+### b) **Effectiveness of Multi-Factor Authentication (MFA) in enhancing user confidentiality and preventing unauthorized access**
+
+Multi-factor authentication (MFA) is a security feature that significantly enhances both **confidentiality** and **prevention of unauthorized access** by requiring users to verify their identity using at least two distinct factors:
+
+1. **Confidentiality**:
+   - MFA adds an additional layer of protection, ensuring that even if a user’s password is compromised, an attacker cannot easily gain access to the user’s account.
+   - By requiring something the user knows (e.g., password) and something the user has (e.g., a smartphone for receiving a one-time password (OTP) or using an authentication app), MFA ensures that an attacker cannot easily impersonate the legitimate user.
+   - Even if the attacker knows the username and password through phishing or data leaks, they still require physical access to the second authentication factor, which makes unauthorized access harder to achieve.
+
+2. **Prevention of Unauthorized Access**:
+   - **Phishing Protection**: MFA helps mitigate phishing attacks. Even if an attacker tricks a user into revealing their password, they would still need the second factor to gain access to the account, which is not as easily intercepted.
+   - **Credential Stuffing Protection**: Attackers who use stolen credentials from data breaches to try and access accounts will find it significantly harder to succeed with MFA in place. The second factor makes it difficult to bypass simple brute-force or credential-stuffing attacks.
+   - **Increased Authentication Security**: MFA also prevents man-in-the-middle attacks (where an attacker intercepts and alters communication between a user and the server) by ensuring that the second factor is tied directly to the user’s device, which cannot be easily accessed by the attacker.
+
+### c) **Impact of Server Downtime on Availability and Proposed Solutions**
+
+Server downtime directly impacts **availability**, which is critical for a mobile banking app that needs to be operational 24/7. Any downtime can result in the inability for users to access accounts, make transactions, or use services like bill payments.
+
+1. **Impact of Server Downtime**:
+   - **Loss of Customer Trust**: Frequent downtime can result in users losing confidence in the app’s reliability, leading to a decrease in app usage and potential loss of customers.
+   - **Financial Impact**: A banking app must operate without interruption to support time-sensitive transactions like bill payments or fund transfers. Downtime may lead to missed payments, delays in transfers, or errors in financial operations.
+   - **Reputation Damage**: Extended downtime can damage the bank’s reputation, as users might view the institution as incapable of maintaining a secure and stable service.
+
+2. **Proposed Solutions**:
+   - **Cloud-Based Infrastructure**: Using cloud services (like AWS, Google Cloud, or Microsoft Azure) that provide auto-scaling, disaster recovery, and geographic redundancy can help ensure that the app remains available even if one server or region goes down. Cloud providers have infrastructure designed to handle outages with failover systems and redundancy.
+   - **Content Delivery Network (CDN)**: A CDN can be used to cache static content across a global network, improving load times and reducing the impact of server failures by ensuring content is still accessible even during localized server downtime.
+   - **Load Balancing**: Implementing load balancers that distribute traffic across multiple servers reduces the strain on any single server, ensuring that if one server fails, others can take over seamlessly.
+   - **Regular Backups and Recovery Plans**: Having automated and regular backups of the system, databases, and user data ensures that in case of failure, the system can be quickly restored. A well-documented disaster recovery plan that includes predefined steps for quickly switching to backup systems can minimize downtime.
+   - **Proactive Monitoring**: Constant monitoring of system performance and alerts for unusual activity or performance drops can help preemptively address issues before they lead to full-scale downtime. Tools like New Relic, Prometheus, or Datadog can provide real-time monitoring of server health.
+
+By combining these strategies, the institution can minimize the impact of server downtime and ensure the app's availability remains high.
